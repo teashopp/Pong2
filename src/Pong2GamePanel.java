@@ -30,6 +30,8 @@ public class Pong2GamePanel extends JPanel implements ActionListener, KeyListene
 	Pong2Paddles p2 = new Pong2Paddles(900, 150, 50, 200);
 	// ball
 	Pong2PongBalls ball = new Pong2PongBalls(500, 250, 25, 25);
+	// object manager
+	Pong2ObjectManager pom = new Pong2ObjectManager(p1, p2, ball);
 
 	// constructor
 	Pong2GamePanel() {
@@ -47,8 +49,7 @@ public class Pong2GamePanel extends JPanel implements ActionListener, KeyListene
 		p1.update();
 		p2.update();
 		ball.update();
-		p1.checkCollision();
-		p2.checkCollision();
+		pom.checkCollision();
 		
 		// check end game
 		if (ball.x == 10) {
