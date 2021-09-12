@@ -15,18 +15,12 @@ public class Pong2ObjectManager implements ActionListener {
 
 	void checkCollision() {
 		// check ball and paddle collision
-		if (omp1.cbtop.intersects(omball.cbball)) {
+		if (omp1.cbpaddle.intersects(omball.cbball)) {
 			omball.xspeed = -omball.xspeed;
-			omball.yspeed += omball.yspeed;
-		} else if (omp1.cbbot.intersects(omball.cbball)) {
+			omball.yspeed = -omball.yspeed;
+		} else if (omp2.cbpaddle.intersects(omball.cbball)) {
 			omball.xspeed = -omball.xspeed;
-			omball.yspeed -= omball.yspeed;
-		} else if (omp2.cbtop.intersects(omball.cbball)) {
-			omball.xspeed = -omball.xspeed;
-			omball.yspeed -= omball.yspeed;
-		} else if (omp2.cbbot.intersects(omball.cbball)) {
-			omball.xspeed = -omball.xspeed;
-			omball.yspeed -= omball.yspeed;
+			omball.yspeed = -omball.yspeed;
 		}
 
 		if (omball.y == 0) {

@@ -50,15 +50,14 @@ public class Pong2GamePanel extends JPanel implements ActionListener, KeyListene
 		p2.update();
 		ball.update();
 		pom.checkCollision();
-		
+
 		// check end game
 		if (ball.x == 10) {
 			currentState = 3;
 		} else if (ball.x == 990) {
 			currentState = 2;
 		}
-		
-		
+
 	}
 
 	// update end state left win
@@ -148,13 +147,21 @@ public class Pong2GamePanel extends JPanel implements ActionListener, KeyListene
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
+
 		if (arg0.getKeyCode() == KeyEvent.VK_ENTER) {
+			if (currentState == END1 || currentState == END2) {
+				p1 = new Pong2Paddles(50, 150, 50, 200);
+				p2 = new Pong2Paddles(900, 150, 50, 200);
+				ball = new Pong2PongBalls(500, 250, 25, 25);
+				pom = new Pong2ObjectManager(p1, p2, ball);
+			}
 			if (currentState == END1) {
 				currentState = MENU;
 			} else if (currentState == END2) {
 				currentState = MENU;
-			} else {
-				currentState++;
+			} else if (currentState == MENU) {
+				currentState = GAME;
+				repaint();
 			}
 		}
 
@@ -168,12 +175,8 @@ public class Pong2GamePanel extends JPanel implements ActionListener, KeyListene
 			} else if (arg0.getKeyCode() == KeyEvent.VK_DOWN) {
 				p2.down = true;
 			}
-			
-			// test
-			//if (arg0.getKeyCode() == KeyEvent.VK_SPACE) {	
-				//ball.balldownright();
-			//}
 		}
+
 	}
 
 	@Override
