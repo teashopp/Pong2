@@ -8,29 +8,39 @@ public class Pong2Paddles extends Pong2GameObject {
 	boolean down;
 
 	// collision box
-	Rectangle cbpaddle;
+	Rectangle cbtop;
+	Rectangle cbbot;
+	
+	// collision box ints
+	int newheight;
+	int newybot;
 
 	// constructor
 	Pong2Paddles(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		speed = 10;
-		cbpaddle = new Rectangle(x, y, width, height);
+		newheight = height / 2;
+		cbtop = new Rectangle(x, y, width, newheight);
+		cbbot = new Rectangle(x, newybot, width, newheight);
 	}
 
 	// draw paddles
 	void draw(Graphics g) {
 		g.setColor(Color.BLUE);
-		g.fillRect(x, y, width, height);
+		g.fillRect(x, y, width, newheight);
+		g.setColor(Color.red);
+		g.fillRect(x, newybot, width, newheight);
 	}
 
 	public void update() {
-	
+		newybot = y + newheight;
 		if (up && y >= 0) {
 			up();
 		} else if (down && y <= 350) {
 			down();
 		}
-		cbpaddle.setBounds(x, y, width, height);
+		cbtop.setBounds(x, y, width, newheight);
+		cbbot.setBounds(x, newybot, width, newheight);
 	}
 
 	// move up

@@ -36,7 +36,7 @@ public class Pong2GamePanel extends JPanel implements ActionListener, KeyListene
 	// constructor
 	Pong2GamePanel() {
 		frameDraw = new Timer(1000 / 60, this);
-		frameDraw.start();
+		frameDraw.start();		
 	}
 
 	// update menu state

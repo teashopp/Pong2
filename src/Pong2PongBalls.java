@@ -5,17 +5,20 @@ import java.util.Random;
 
 public class Pong2PongBalls extends Pong2GameObject {
 
-	int xspeed = 10;
-	int yspeed = 10;
-	Random rand21;
+	int xspeed = 5;
+	int yspeed = 5;
+	Random rand21 = new Random();;
 	int sidestart;
+	int randnum = rand21.nextInt((2 - 0) + 0);
 	// collision box ball
 	Rectangle cbball;
 
 	Pong2PongBalls(int x, int y, int width, int height) {
 		super(x, y, width, height);
-		// TODO Auto-generated constructor stub
-		cbball = new Rectangle(x, y, width, height);
+		// TODO Auto-generated constructor stucture
+		if (randnum == 1) {
+			xspeed = -xspeed;
+		}
 	}
 
 	// draw
@@ -26,20 +29,10 @@ public class Pong2PongBalls extends Pong2GameObject {
 
 	// update
 	void update() {
-		Random rand21 = new Random((4 - 1) + 1);
-		if (rand21 == 1) {
-			x += xspeed;
-			y -= yspeed;
-		} else if (rand21 == 2) {
-			x += xspeed;
-			y += yspeed;
-		} else if (rand21 == 3) {
-			x -= xspeed;
-			y -= yspeed;
-		} else if (rand21 == 4) {
-			x -= xspeed;
-			y += yspeed;
-		}
+		x += xspeed;
+		y += yspeed;
+		cbball = new Rectangle(x, y, width, height);
 		cbball.setBounds(x, y, width, height);
+
 	}
 }

@@ -4,6 +4,7 @@ public class Pong2 {
 
 	// pong game that I'm restarting because I overcomplicated the original one and
 	// figured it would be easier to start from scratch without the many pong balls
+	// split collision boxes and set up ball side
 
 	JFrame mainframe;
 	Pong2GamePanel p2gp;
